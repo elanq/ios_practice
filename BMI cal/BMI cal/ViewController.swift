@@ -25,16 +25,13 @@ class ViewController: UIViewController {
     }
     
     func calculateBMI() {
-        let height = Float(bodyWeightOutlet.text ?? "") ?? 1
-        let weight = Float(bodyHeightOutlet.text ?? "") ?? 0
-        let bmi = weight / ((height/100)*(height/100))
+        let height = (Float(bodyHeightOutlet.text ?? "0") ?? 0) / 100
+        let weight = Float(bodyWeightOutlet.text ?? "") ?? 0
+        let bmi = weight / ((height)*(height))
         
-        print(height)
-        print(weight)
-        print(bmi)
-        if bmi != 0 {
+        if weight != 0 && height != 0 {
             descriptionLabel.text = getBMIDescription(bmi: bmi)
-            bodyWeightLabel.text = "\(bmi) %"
+            bodyWeightLabel.text = "\(Int(bmi)) %"
         }
         
     }
